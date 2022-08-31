@@ -24,10 +24,19 @@ If you see something like this, then some other program is grabbing the Nano as 
 [13690.137029] ch341 3-2:1.0: device disconnected
 ```
 
+These two lines show you that ch341 was claimed and what claimed it
+```
+[13690.130893] input: BRLTTY 6.4 Linux Screen Driver Keyboard as /devices/virtual/input/input39
+[13690.134914] usb 3-2: usbfs: interface 0 claimed by ch341 while 'brltty' sets config #1
+```
+
 Remove BRLTTY
 ```
 sudo apt remove brltty
 ```
+
+If BRLTTY was not the program that was grabbing USB0 then you'd have to check what program it was and also how to handle it. You can set "udev" rules so that the program doesn't automatically grab USB0. Never had to do this so I don't have an example of that. You may also be able to just uninstall the program all together.
+
 
 Restart
 ```
